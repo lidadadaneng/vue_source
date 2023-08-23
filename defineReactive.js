@@ -111,8 +111,8 @@ class Dep {
     }
     // 4.3、notify方法用来派发订阅者更新
     notify(newVal,value) {
-        // 5.7、 执行每个订阅者Watcher的run方法完成 更新
-        this.subs.forEach(watcher => watcher.run(newVal,value))
+        // 8.12 依赖更新派发更新时 先走update判断是否要更新
+        this.subs.forEach(watcher => watcher.update(newVal, value))
     }
 }
 exports.observe = observe
